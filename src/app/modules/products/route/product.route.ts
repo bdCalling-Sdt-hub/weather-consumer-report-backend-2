@@ -10,6 +10,7 @@ import { getProductsByCategoryController } from '../controller/getProductDataWit
 import { getTopAverageRatedProductController } from '../controller/getTopAverageRatedProduct.controller';
 import { getRandomProductsController } from '../controller/getRandomProducts.controller';
 import { searchProductBasedOnCriteriaController } from '../controller/searchProductBasedOnCriteria.controller';
+import { addProductWithReviewController } from '../controller/addProductWithReview.controller';
 
 const productRouter = express.Router();
 productRouter.get('/:id', getSingleProductDataController);
@@ -23,6 +24,7 @@ productRouter.post(
   searchProductBasedOnCriteriaController
 );
 productRouter.post('/add', addProductController);
+productRouter.post('/add-product-with-review', addProductWithReviewController);
 productRouter.delete('/:id', removeProductController);
 productRouter.get(
   '/serial/top-10-rated-product',
