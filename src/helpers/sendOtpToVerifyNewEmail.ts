@@ -1,17 +1,16 @@
 import { nodemailerTransporter } from '../config/nodemailer/nodemailer.config';
 
-export const sendContactUsEmail = (
-  userName: string,
-  userEmail: string,
-  message: string,
-  ownerEmail: string
+export const sendOtpToVerifyNewEmail = (
+  nameOfUser: string,
+  newEmail: string,
+  otp: string
 ) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const contactUsEmail = {
-        to: ownerEmail, // Owner's email address
-        from: userEmail, // Sender's email address (user)
-        subject: `New Contact Us Message from ${userName}`,
+      const verificationEmail = {
+        to: newEmail,
+        from: 'apurboroy7077@gmail.com', // Replace with your email address
+        subject: `Verify Your New Email Address`,
         html: `
         <html>
         <head>
@@ -40,15 +39,16 @@ export const sendContactUsEmail = (
               line-height: 1.6;
               font-size: 16px;
             }
-            .message {
-              font-size: 16px;
-              font-weight: normal;
+            .otp {
+              font-size: 20px;
+              font-weight: bold;
               color: #2b6cb0;
+              text-align: center;
+              padding: 10px;
               background-color: #f9fafb;
               border: 1px solid #e2e8f0;
               border-radius: 4px;
-              padding: 15px;
-              margin-top: 20px;
+              margin: 20px 0;
             }
             .footer {
               text-align: center;
@@ -60,17 +60,13 @@ export const sendContactUsEmail = (
         </head>
         <body>
           <div class="container">
-            <h1>New Message from ${userName}</h1>
-            <p>Hi Team,</p>
-            <p>You have received a new message from the contact form. Here are the details:</p>
-            <p><strong>Name:</strong> ${userName}</p>
-            <p><strong>Email:</strong> ${userEmail}</p>
-            <div class="message">
-              <p><strong>Message:</strong></p>
-              <p>${message}</p>
-            </div>
+            <h1>Email Address Verification</h1>
+            <p>Hi ${nameOfUser},</p>
+            <p>We received a request to verify this email address for your account. Please use the OTP below to confirm that this is your valid email address:</p>
+            <div class="otp">${otp}</div>
+            <p>This OTP is valid for the next 10 minutes. If you did not request this, please ignore this email or contact support immediately.</p>
             <div class="footer">
-              <p>Thank you for your attention.</p>
+              <p>Thank you for your cooperation.</p>
               <p>Best Regards, <br> Your Team</p>
             </div>
           </div>
@@ -79,7 +75,7 @@ export const sendContactUsEmail = (
         `,
       };
 
-      nodemailerTransporter.sendMail(contactUsEmail, (error, info) => {
+      nodemailerTransporter.sendMail(verificationEmail, (error, info) => {
         if (error) {
           console.error('Error:', error);
           reject(error);

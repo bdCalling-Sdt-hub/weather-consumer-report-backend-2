@@ -1,21 +1,17 @@
 import bcrypt from 'bcryptjs';
 let saltRounds = 10;
-export const hashMyPassword = (plainPassword: string) => {
+export const hashMyPassword = (plainPassword: string): Promise<string> => {
   return new Promise((resolve, reject) => {
-    bcrypt.hash(
-      plainPassword,
-      saltRounds,
-      (error: Error | null, hashedPassword: string) => {
-        if (error) {
-          console.log(error);
-          reject(error);
-          return;
-        } else {
-          resolve(hashedPassword);
-          return;
-        }
+    bcrypt.hash(plainPassword, saltRounds, (error, hashedPassword) => {
+      if (error) {
+        console.log(error);
+        reject(error);
+      } else if (hashedPassword) {
+        resolve(hashedPassword);
+      } else {
+        reject(new Error('Failed to hash password'));
       }
-    );
+    });
   });
 };
 // export const checkPasswordOld = (
