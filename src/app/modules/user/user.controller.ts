@@ -28,6 +28,7 @@ import { jwtSecretKey } from '../../../data/environmentVariables';
 import { sendOtpToVerifyNewEmail } from '../../../helpers/sendOtpToVerifyNewEmail';
 import { getAndParseJwtTokenFromHeader } from '../../../helpers/getAndParseBearerTokenFromHeader';
 import { token } from 'morgan';
+import { sendWelcomeEmail } from '../../../helpers/sendWelcomeEmail';
 
 const createUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -77,6 +78,7 @@ const verifyUser = catchAsync(
       createdAt: Date.now(),
       updatedAt: Date.now(),
     });
+    await sendWelcomeEmail(nameOfUser, emailOfUser);
 
     return sendResponse(res, {
       code: StatusCodes.OK,

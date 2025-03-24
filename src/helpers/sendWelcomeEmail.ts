@@ -1,15 +1,12 @@
 import { nodemailerTransporter } from '../config/nodemailer/nodemailer.config';
 
-export const sendPasswordResetConfirmation = (
-  nameOfUser: string,
-  emailOfUser: string
-) => {
+export const sendWelcomeEmail = (nameOfUser: string, emailOfUser: string) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const myEmail = {
+      const welcomeEmail = {
         to: emailOfUser,
-        from: 'your-email@example.com', // Replace with your email address
-        subject: 'Password Reset Successful',
+        from: 'apurboroy7077@gmail.com', // Replace with your email address
+        subject: `Welcome to the Weathers Consumer Report!`,
         html: `
         <html>
         <head>
@@ -38,12 +35,6 @@ export const sendPasswordResetConfirmation = (
               border-radius: 8px 8px 0 0;
               font-size: 28px;
             }
-            h2 {
-              text-align: center;
-              font-size: 18px;
-              color: #4a5568;
-              margin-bottom: 25px;
-            }
             p {
               line-height: 1.6;
               font-size: 16px;
@@ -59,24 +50,20 @@ export const sendPasswordResetConfirmation = (
               color: #2b6cb0;
               text-decoration: none;
             }
-            .footer p {
-              margin-top: 5px;
-            }
           </style>
         </head>
         <body>
           <div class="container">
             <div class="header">
-              Accountability World
+              Weathers Consumer Report
             </div>
-            <h2>Password Reset Successful</h2>
-            <p>Hey ${nameOfUser},</p>
-            <p>Your password has been successfully reset. If you did not request this change, please contact support immediately.</p>
-            <p>You’re all set! Your password has successfully been updated in our system. If you continue to experience login issues, please contact us at info@accountabilityworld.net.</p>
-            <p>Thank you for being a vital member of our movement.</p>
+            <p>Hi ${nameOfUser},</p>
+            <p>Thank you for creating a profile and joining our movement! We hope you have reviewed our Mission and Vision Statements and are on board with improving the consumer market.</p>
+            <p>Please be mindful of our Terms & Conditions. It is of the utmost importance that we provide a “safe space”. Therefore, no trolling, defamation of character, profanity, and inappropriate content will be tolerated.</p>
+            <p>Welcome, once again! Please post reviews often and share the website with others. Thank you in advance for your cooperation and support!</p>
             <div class="footer">
-              <p>Sincerely, <br> The Weathers Consumer Report Team</p>
-              <p><a href="https://accountabilityworld.org">Visit our website</a></p>
+              <p>Best Regards, <br> The Weathers Consumer Report Team</p>
+              <p><a href="https://weathersconsumerreport.org">Visit our website</a></p>
             </div>
           </div>
         </body>
@@ -84,13 +71,13 @@ export const sendPasswordResetConfirmation = (
         `,
       };
 
-      nodemailerTransporter.sendMail(myEmail, (error, info) => {
+      nodemailerTransporter.sendMail(welcomeEmail, (error, info) => {
         if (error) {
           console.error('Error:', error);
           reject(error);
         } else {
           console.log('Email sent:', info.response);
-          resolve('Email Sent');
+          resolve('Welcome Email Sent');
         }
       });
     } catch (error) {
