@@ -18,6 +18,7 @@ import {
 import { sendResetPasswordLinkToEmail } from '../../../helpers/sendResetPasswordLinkToEmail';
 import { GenerateRandom5DigitNumber } from '../../../helpers/GenerateRandom5DigitNumber';
 import { dataOfResetPasswordRequests } from '../../../data/temporaryData';
+import { sendPasswordResetConfirmation } from '../../../helpers/sendPasswordResetConfirmation';
 
 //login
 const loginIntoDB = catchAsync(async (req, res, next) => {
@@ -130,10 +131,18 @@ const resetPasswordV2 = catchAsync(async (req, res, next) => {
   const { email } = userData;
   const newPasswordHash = await hashMyPassword(password);
 
-  await userDataModelOfWeatherConsumerReport.findOneAndUpdate(
+  const userData2 = await userDataModelOfWeatherConsumerReport.findOneAndUpdate(
     { email },
     { passwordHash: newPasswordHash }
   );
+  if (!userData2) {
+    return res.status(StatusCodes.NOT_FOUND).json({
+      message: 'user does not exists',
+    });
+  }
+  const { username } = userData2;
+
+  await sendPasswordResetConfirmation(username, email);
 
   sendResponse(res, {
     code: StatusCodes.OK,
