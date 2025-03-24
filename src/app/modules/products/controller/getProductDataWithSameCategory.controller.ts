@@ -8,7 +8,7 @@ export const getProductsByCategoryController = myControllerHandler(
 
     const products = await myProductModel
       .find({ category: categoryName })
-      .limit(25);
+      .limit(50);
 
     const myResponse = {
       message: 'Review Given Successfully',

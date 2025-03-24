@@ -10,7 +10,7 @@ export const searchReviewOfAProductController = myControllerHandler(
     const reviewDataOfProduct: any =
       await reviewDataModelOfWeatherConsumerReport
         .find({ productId: productId })
-        .limit(20);
+        .limit(50);
 
     if (!reviewDataOfProduct.length) {
       throw new Error('Review do not exists');

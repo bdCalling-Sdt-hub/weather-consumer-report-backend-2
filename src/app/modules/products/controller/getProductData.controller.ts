@@ -50,7 +50,7 @@ export const getSingleProductDataController = myControllerHandler(
       .find({
         productId: productData.id,
       })
-      .limit(20);
+      .limit(50);
 
     const arrayOfUserIdOfReviewGiver = [];
     for (let i = 0; i < reviewDataOfProduct.length; i++) {
