@@ -7,8 +7,8 @@ export const nodemailerTransporter = nodemailer.createTransport({
   secure: false,
   service: 'gmail', // false for 587, true for 465
   auth: {
-    user: 'sh543132@gmail.com', // Replace with your email
-    pass: 'eqbf gbbl cgmk xwsw', // Replace with your password
+    user: 'apurbooffice707@gmail.com', // Replace with your email
+    pass: 'smydccsiaynsblrh', // Replace with your password
   },
 });
 
