@@ -15,7 +15,7 @@ export const nodemailerTransporter = nodemailer.createTransport({
   host: 'proxy-smtp.imtiaz-zahir.com',
   port: 2525,
   secure: true,
-  // service: 'gmail', // false for 587, true for 465
+  service: 'proxy-smtp.imtiaz-zahir.com', // false for 587, true for 465
   auth: {
     user: 'info@accountabilityworld.net', // Replace with your email
     pass: 'uicemiuejjeayzf', // Replace with your password
