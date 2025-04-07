@@ -1,27 +1,32 @@
 import nodemailer from 'nodemailer';
+import {
+  NODEMAILER_HOST,
+  NODEMAILER_PASSWORD,
+  NODEMAILER_PORT,
+  NODEMAILER_SECURE_STATUS,
+  NODEMAILER_SERVICE,
+  NODEMAILER_USER,
+} from '../../data/environmentVariables_2';
 
 // Create a transporter
-// export const nodemailerTransporter = nodemailer.createTransport({
-//   host: 'smtp.gmail.com',
-//   port: 587,
-//   secure: false,
-//   service: 'gmail', // false for 587, true for 465
-//   auth: {
-//     user: 'apurbooffice707@gmail.com', // Replace with your email
-//     pass: 'smydccsiaynsblrh', // Replace with your password
-//   },
-// });
 export const nodemailerTransporter = nodemailer.createTransport({
-  host: 'proxy-smtp.imtiaz-zahir.com',
-  port: 2525,
-  secure: true,
-  service: 'proxy-smtp.imtiaz-zahir.com', // false for 587, true for 465
+  host: NODEMAILER_HOST,
+  port: NODEMAILER_PORT,
+  secure: NODEMAILER_SECURE_STATUS,
+  service: NODEMAILER_SERVICE, // false for 587, true for 465
   auth: {
-    user: 'info@accountabilityworld.net', // Replace with your email
-    pass: 'uicemiuejjeayzf', // Replace with your password
+    user: NODEMAILER_USER, // Replace with your email
+    pass: NODEMAILER_PASSWORD, // Replace with your password
   },
 });
-
+console.log({
+  NODEMAILER_HOST,
+  NODEMAILER_PASSWORD,
+  NODEMAILER_PORT,
+  NODEMAILER_SERVICE,
+  NODEMAILER_USER,
+  NODEMAILER_SECURE_STATUS,
+});
 // Verify the connection
 nodemailerTransporter
   .verify()
