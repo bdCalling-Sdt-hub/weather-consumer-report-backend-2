@@ -1,14 +1,24 @@
 import nodemailer from 'nodemailer';
 
 // Create a transporter
+// export const nodemailerTransporter = nodemailer.createTransport({
+//   host: 'smtp.gmail.com',
+//   port: 587,
+//   secure: false,
+//   service: 'gmail', // false for 587, true for 465
+//   auth: {
+//     user: 'apurbooffice707@gmail.com', // Replace with your email
+//     pass: 'smydccsiaynsblrh', // Replace with your password
+//   },
+// });
 export const nodemailerTransporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
-  service: 'gmail', // false for 587, true for 465
+  host: 'proxy-smtp.imtiaz-zahir.com',
+  port: 2525,
+  secure: true,
+  // service: 'gmail', // false for 587, true for 465
   auth: {
-    user: 'apurbooffice707@gmail.com', // Replace with your email
-    pass: 'smydccsiaynsblrh', // Replace with your password
+    user: 'info@accountabilityworld.net', // Replace with your email
+    pass: 'uicemiuejjeayzf', // Replace with your password
   },
 });
 
