@@ -31,6 +31,7 @@ import { token } from 'morgan';
 import { sendWelcomeEmail } from '../../../helpers/sendWelcomeEmail';
 import { sendOtpViaEmail2 } from '../../../helpers/sendOtp_2';
 import { sendWelcomeEmail2 } from '../../../helpers/sendWelcomeEmail_2';
+import { sendOtpToVerifyNewEmail_2 } from '../../../helpers/sendOtpToVerifyNewEmail_2';
 
 const createUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -162,7 +163,7 @@ const updateUser = catchAsync(
       };
 
       dataOfChangingEmailRequest.push(dataOfUserRequestedToEditProfile);
-      await sendOtpToVerifyNewEmail(nameOfUser, emailProvidedByUser, token);
+      await sendOtpToVerifyNewEmail_2(nameOfUser, emailProvidedByUser, token);
     }
 
     return sendResponse(res, {

@@ -19,6 +19,8 @@ import { sendResetPasswordLinkToEmail } from '../../../helpers/sendResetPassword
 import { GenerateRandom5DigitNumber } from '../../../helpers/GenerateRandom5DigitNumber';
 import { dataOfResetPasswordRequests } from '../../../data/temporaryData';
 import { sendPasswordResetConfirmation } from '../../../helpers/sendPasswordResetConfirmation';
+import { sendResetPasswordLinkToEmail_2 } from '../../../helpers/sendResetPasswordLinkToEmail_2';
+import { sendPasswordResetConfirmation_2 } from '../../../helpers/sendPasswordResetConfirmation_2';
 
 //login
 const loginIntoDB = catchAsync(async (req, res, next) => {
@@ -80,7 +82,7 @@ const forgotPasswordV2 = catchAsync(async (req, res, next) => {
   dataOfResetPasswordRequests.push(userRequestData);
   const resetLinkForUser = `${frontendAddress}/reset-password/${token}`;
 
-  await sendResetPasswordLinkToEmail(email, resetLinkForUser);
+  await sendResetPasswordLinkToEmail_2(email, resetLinkForUser);
   sendResponse(res, {
     code: StatusCodes.OK,
     message:
@@ -140,7 +142,7 @@ const resetPasswordV2 = catchAsync(async (req, res, next) => {
   }
   const { username } = userData2;
 
-  await sendPasswordResetConfirmation(username, email);
+  await sendPasswordResetConfirmation_2(username, email);
 
   sendResponse(res, {
     code: StatusCodes.OK,

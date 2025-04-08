@@ -8,6 +8,7 @@ import {
 } from '../../../../helpers/GenerateRandom5DigitNumber';
 import { dataOfResetPasswordRequests } from '../../../../data/temporaryData';
 import { sendPasswordResetOtpViaEmail } from '../../../../helpers/sendPasswordResetOtpViaEmail';
+import { sendPasswordResetOtpViaEmail_2 } from '../../../../helpers/sendPasswordResetOtpViaEmail_2';
 
 export const adminForgotPasswordController = myControllerHandler(
   async (req, res) => {
@@ -24,7 +25,7 @@ export const adminForgotPasswordController = myControllerHandler(
     const temporaryUserData = { email, otp, createdAt: Date.now() };
     dataOfResetPasswordRequests.push(temporaryUserData);
 
-    await sendPasswordResetOtpViaEmail(username, email, otp);
+    await sendPasswordResetOtpViaEmail_2(username, email, otp);
 
     sendResponse(res, {
       code: StatusCodes.OK,

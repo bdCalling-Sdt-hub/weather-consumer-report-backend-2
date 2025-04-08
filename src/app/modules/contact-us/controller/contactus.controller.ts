@@ -6,16 +6,17 @@ import {
   CONTACT_EMAIL_2,
   ownerEmail,
 } from '../../../../data/environmentVariables';
+import { sendContactUsEmail_2 } from '../../../../helpers/sendOwnerEmailOfContactUs_2';
 
 export const contactusController = myControllerHandler(async (req, res) => {
   const { nameOfUser, emailOfUser, messageOfUser } = req.body;
-  await sendContactUsEmail(
+  await sendContactUsEmail_2(
     nameOfUser,
     emailOfUser,
     messageOfUser,
     CONTACT_EMAIL_1
   );
-  await sendContactUsEmail(
+  await sendContactUsEmail_2(
     nameOfUser,
     emailOfUser,
     messageOfUser,
