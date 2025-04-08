@@ -45,7 +45,7 @@ export const sendEmailWithMailgunController = myControllerHandler(
         success: true,
         data: body,
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error('Mailgun Error:', error);
 
       // More detailed error response

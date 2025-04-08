@@ -38,3 +38,4 @@ export const MAILCHIMP_AUDIENCE_ID = process.env
   .MAILCHIMP_AUDIENCE_ID as string;
 export const MAILGUN_API_KEY = process.env.MAILGUN_API_KEY as string;
 export const MAILGUN_DOMAIN = process.env.MAILGUN_DOMAIN as string;
+export const EMAIL_SENDER_SERVER = process.env.EMAIL_SENDER_SERVER as string;

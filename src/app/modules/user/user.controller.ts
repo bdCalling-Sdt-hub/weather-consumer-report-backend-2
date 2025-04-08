@@ -29,6 +29,8 @@ import { sendOtpToVerifyNewEmail } from '../../../helpers/sendOtpToVerifyNewEmai
 import { getAndParseJwtTokenFromHeader } from '../../../helpers/getAndParseBearerTokenFromHeader';
 import { token } from 'morgan';
 import { sendWelcomeEmail } from '../../../helpers/sendWelcomeEmail';
+import { sendOtpViaEmail2 } from '../../../helpers/sendOtp_2';
+import { sendWelcomeEmail2 } from '../../../helpers/sendWelcomeEmail_2';
 
 const createUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -41,7 +43,7 @@ const createUser = catchAsync(
     );
     //  generate and send otp
     const otp = GenerateRandom5DigitNumber().toString();
-    await sendOtpViaEmail(nameOfUser, emailOfUser, otp);
+    await sendOtpViaEmail2(nameOfUser, emailOfUser, otp);
     // save unverified user data in temporary storage
     const unverifiedUsersData = {
       nameOfUser,
@@ -78,7 +80,7 @@ const verifyUser = catchAsync(
       createdAt: Date.now(),
       updatedAt: Date.now(),
     });
-    await sendWelcomeEmail(nameOfUser, emailOfUser);
+    await sendWelcomeEmail2(nameOfUser, emailOfUser);
 
     return sendResponse(res, {
       code: StatusCodes.OK,
