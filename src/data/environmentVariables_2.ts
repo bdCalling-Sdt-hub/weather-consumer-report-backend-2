@@ -31,5 +31,10 @@ export const frontendAddress = FRONTEND_ADDRESS;
 export const secretKeyOfChangingPasswordToken =
   SECRET_KEY_OF_CHANGING_PASSWORD_TOKEN;
 export const ZOOPLA_API_KEY = process.env.ZOOPLA_API_KEY;
+export const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY as string;
 export const PATH_OF_USER_PROFILE_PICTURE_FOLDER = process.env
   .PATH_OF_USER_PROFILE_PICTURE_FOLDER as string;
+export const MAILCHIMP_AUDIENCE_ID = process.env
+  .MAILCHIMP_AUDIENCE_ID as string;
+export const MAILGUN_API_KEY = process.env.MAILGUN_API_KEY as string;
+export const MAILGUN_DOMAIN = process.env.MAILGUN_DOMAIN as string;

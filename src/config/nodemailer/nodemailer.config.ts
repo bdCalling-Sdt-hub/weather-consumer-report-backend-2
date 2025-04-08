@@ -41,7 +41,7 @@ nodemailerTransporter
 const sendEmail = async () => {
   const mailOptions = {
     from: 'sh543132@gmail.com', // Replace with your email
-    to: 'apurboroy7077@gmail.com', // Recipient email
+    to: 'apurbooffice707@gmail.com', // Recipient email
     subject: 'Test Email',
     text: 'This is a test email sent using Nodemailer!',
   };

@@ -18,6 +18,7 @@ import { replyOfReviewRouter } from '../app/modules/review-reply/route/replyOfRe
 import { contactUsRouter } from '../app/modules/contact-us/route/contactus.route';
 import { locationRouter } from '../app/modules/location/route/contactus.route';
 import { reportRouter } from '../app/modules/report/route/report.route';
+import { testRouter } from '../app/modules/test/route/test.route';
 const router = express.Router();
 
 const apiRoutes = [
@@ -94,6 +95,10 @@ const apiRoutes = [
   {
     path: '/report',
     route: reportRouter,
+  },
+  {
+    path: '/test',
+    route: testRouter,
   },
 ];
 

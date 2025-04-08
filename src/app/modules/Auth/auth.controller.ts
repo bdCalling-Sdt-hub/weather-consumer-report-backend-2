@@ -136,9 +136,7 @@ const resetPasswordV2 = catchAsync(async (req, res, next) => {
     { passwordHash: newPasswordHash }
   );
   if (!userData2) {
-    return res.status(StatusCodes.NOT_FOUND).json({
-      message: 'user does not exists',
-    });
+    throw new Error('user does not exists');
   }
   const { username } = userData2;
 
