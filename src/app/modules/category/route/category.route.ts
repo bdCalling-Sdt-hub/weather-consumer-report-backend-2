@@ -12,6 +12,8 @@ import { addUnapprovedCategoryController } from '../controller/addUnapprovedCate
 import { getUnapprovedCategoryDataController } from '../controller/getDataOfUnapprovedCategory.controller';
 import { getSingleUnapprovedDataController } from '../controller/getSingleUnapprovedData.controller';
 import { approveOrRejectCategoryController } from '../controller/approveOrRejectCategory.controller';
+import { getTotalNumberOfCategoryController } from '../controller/getTotalNumberOfCategory.controller';
+import { getCategoryAccordingToPageController } from '../controller/getCategoryAccordingToPage.controller';
 
 const categoryRouter = express.Router();
 
@@ -42,6 +44,14 @@ categoryRouter.get(
 categoryRouter.post(
   '/unapproved/approve-or-reject',
   approveOrRejectCategoryController
+);
+categoryRouter.post(
+  '/get-total-number-of-category',
+  getTotalNumberOfCategoryController
+);
+categoryRouter.post(
+  '/get-category-according-to-page-number',
+  getCategoryAccordingToPageController
 );
 
 export { categoryRouter };

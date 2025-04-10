@@ -11,6 +11,7 @@ import { getTopAverageRatedProductController } from '../controller/getTopAverage
 import { getRandomProductsController } from '../controller/getRandomProducts.controller';
 import { searchProductBasedOnCriteriaController } from '../controller/searchProductBasedOnCriteria.controller';
 import { addProductWithReviewController } from '../controller/addProductWithReview.controller';
+import { getProductsOfSpecificCategoryController } from '../controller/getProductsOfSpecificCategory.controller';
 
 const productRouter = express.Router();
 productRouter.get('/:id', getSingleProductDataController);
@@ -36,5 +37,9 @@ productRouter.get(
 );
 productRouter.get('/serial/top-categories', getTopCategoriesController);
 productRouter.get('/serial/get-random-products', getRandomProductsController);
+productRouter.get(
+  '/get-products-of-specific-category/:id',
+  getProductsOfSpecificCategoryController
+);
 
 export { productRouter };
