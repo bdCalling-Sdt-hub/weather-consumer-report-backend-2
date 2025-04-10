@@ -14,6 +14,7 @@ import { getSingleUnapprovedDataController } from '../controller/getSingleUnappr
 import { approveOrRejectCategoryController } from '../controller/approveOrRejectCategory.controller';
 import { getTotalNumberOfCategoryController } from '../controller/getTotalNumberOfCategory.controller';
 import { getCategoryAccordingToPageController } from '../controller/getCategoryAccordingToPage.controller';
+import { populateCategoryController } from '../controller/populateCategory.controller';
 
 const categoryRouter = express.Router();
 
@@ -53,5 +54,5 @@ categoryRouter.post(
   '/get-category-according-to-page-number',
   getCategoryAccordingToPageController
 );
-
+categoryRouter.post('/populate-category', populateCategoryController);
 export { categoryRouter };
