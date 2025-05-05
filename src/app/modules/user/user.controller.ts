@@ -341,6 +341,18 @@ const getHomePageDataForLoggedUsers = catchAsync(
   }
 );
 
+export const getUserDataWithAuthTokenController = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    console.log('request received of user data');
+    return sendResponse(res, {
+      code: StatusCodes.OK,
+      message:
+        'OTP sent to your email, please verify your email within the next 3 minutes.',
+      // data: result,
+    });
+  }
+);
+
 export const UserController = {
   createUser,
   verifyUser,

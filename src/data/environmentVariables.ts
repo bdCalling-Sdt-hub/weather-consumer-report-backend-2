@@ -3,9 +3,10 @@ type environmentModeType = 'DEVELOPMENT' | 'PRODUCTION';
 let environmentMode = 'PRODUCTION' as environmentModeType;
 
 import dotenv from 'dotenv';
+import { MONGODB_URL } from './environmentVariables_2';
 dotenv.config();
 const onlineDatabase1 = `mongodb+srv://ar7:12345@cluster0.1g8wuka.mongodb.net/weather_consumer_report?retryWrites=true&w=majority`;
-const onlineDatabase2 = 'mongodb://localhost:27017/Weather';
+const onlineDatabase2 = MONGODB_URL;
 
 export const databaseUrlOfWeatherConsumerReport = onlineDatabase2;
 export const jwtSecretKey = 'weather_consumer_report_tag_hash';
